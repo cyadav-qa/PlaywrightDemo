@@ -1,0 +1,26 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build
+        run: dotnet build PlaywrightDemo/PlaywrightDemo.csproj
+
+      - name: Install browsers
+        run: pwsh PlaywrightDemo/bin/Debug/net10.0/playwright.ps1 install --with-deps chromium
+
+      - name: Run tests
+        run: dotnet test PlaywrightDemo/PlaywrightDemo.csproj --no-build
