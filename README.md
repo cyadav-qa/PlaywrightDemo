@@ -19,12 +19,13 @@ PlaywrightDemo/
 .github/workflows/playwright.yml
 ```
 
-## Tests (9)
+## Tests (12)
 | Area | Tests |
 |---|---|
 | Login | 1 valid, 4 invalid (data-driven) |
 | Cart | Add to cart, logout |
 | API | GET post, POST post |
+| Internet | Checkbox, dropdown, JS alert |
 
 ## How to run
 ```
